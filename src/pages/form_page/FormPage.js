@@ -3,10 +3,14 @@ import "./Form.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { addStudent } from "../../redux/studentSlice";
 
 function FormPage() {
   const [name, setName] = useState("");
   const [gen, setGen] = useState(0);
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +21,8 @@ function FormPage() {
       name,
       gen,
     };
-
-    console.log(student);
+    dispatch(addStudent(student));
+    // console.log(student);
   };
 
   return (
