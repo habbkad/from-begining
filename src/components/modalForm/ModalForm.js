@@ -1,30 +1,27 @@
 import React, { useState } from "react";
-import "./Form.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addStudent } from "../../redux/studentSlice";
+import { addStudent, editStudent } from "../../redux/studentSlice";
 import { v4 as uuidv4 } from "uuid";
 
-function FormPage() {
-  const [name, setName] = useState("");
-  const [gen, setGen] = useState(0);
+function ModalForm(props) {
+  const data = props.data;
+  const [name, setName] = useState(data.name);
+  const [gen, setGen] = useState(data.gen);
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const student = {
-      // name: name,
-      // gen:gen or
-      name,
-      gen,
-      id: uuidv4(),
+      name: name,
+      gen: gen,
+      id: data.id,
     };
-    dispatch(addStudent(student));
-    // console.log(student);
+
+    dispatch(editStudent(student));
   };
 
   return (
@@ -68,4 +65,4 @@ function FormPage() {
   );
 }
 
-export default FormPage;
+export default ModalForm;

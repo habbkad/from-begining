@@ -1,7 +1,17 @@
-import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Modal,
+  Row,
+  Table,
+} from "react-bootstrap";
 // import "./pages/home_page/Home.css";
 import { useSelector } from "react-redux";
+import ModalForm from "../../components/modalForm/ModalForm";
+import Studentcontent from "../../components/StudentContent/Studentcontent";
 
 function Home() {
   const student = useSelector((state) => state.student);
@@ -10,20 +20,25 @@ function Home() {
     <div>
       <Container>
         <Row>
-          {student.students.map((item) => {
-            return (
-              <Col>
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      {item.gen}
-                    </Card.Subtitle>
-                  </Card.Body>
-                </Card>
-              </Col>
-            );
-          })}
+          <Col>
+            <Table striped bordered hover variant="dark">
+              {" "}
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th> Name</th>
+                  <th>Gen</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {student.students.map((item, index) => {
+                  return <Studentcontent item={item} key={item.id} />;
+                })}
+              </tbody>
+            </Table>
+          </Col>
+          <Col></Col>
         </Row>
       </Container>
     </div>
