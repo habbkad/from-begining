@@ -19,7 +19,12 @@ export const studentSlice = createSlice({
 
       state.students = newArr;
     },
-    deleteStudent: () => {},
+    deleteStudent: (state, action) => {
+      const newArr = state.students.filter(
+        (item) => item.id !== action.payload
+      );
+      state.students = newArr;
+    },
   },
 });
 

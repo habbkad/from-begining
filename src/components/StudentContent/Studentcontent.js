@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import ModalForm from "../modalForm/ModalForm";
 import { Modal } from "react-bootstrap";
+import { deleteStudent } from "../../redux/studentSlice";
+import { useDispatch } from "react-redux";
 
 function Studentcontent({ item }) {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -13,7 +16,13 @@ function Studentcontent({ item }) {
       <td>{item.gen}</td>
       <td>
         <button onClick={handleShow}>Edit</button>
-        <button>Delete</button>
+        <button
+          onClick={(e) => {
+            dispatch(deleteStudent(item.id));
+          }}
+        >
+          Delete
+        </button>
       </td>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
