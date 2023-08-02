@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const studentSlice = createSlice({
   name: "counter",
   initialState: {
-    students: [{ name: "Habib", gen: "53", id: "hsjkdggsud65234" }],
+    students: [],
   },
   reducers: {
     addStudent: (state, action) => {

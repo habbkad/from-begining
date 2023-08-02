@@ -24,7 +24,8 @@ function FormPage() {
       id: uuidv4(),
     };
     dispatch(addStudent(student));
-    // console.log(student);
+    setName('')
+    setGen(0)
   };
 
   return (
