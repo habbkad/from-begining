@@ -1,10 +1,8 @@
 import React, { useState } from "react";
+import { Form, Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addStudent, editStudent } from "../../redux/studentSlice";
-import { v4 as uuidv4 } from "uuid";
+import { editStudent } from "../../redux/studentSlice";
 
 function ModalForm(props) {
   const data = props.data;
