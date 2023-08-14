@@ -3,9 +3,11 @@ import ModalForm from "../modalForm/ModalForm";
 import { Modal } from "react-bootstrap";
 import { deleteStudent } from "../../redux/studentSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Studentcontent({ item }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -22,6 +24,13 @@ function Studentcontent({ item }) {
           }}
         >
           Delete
+        </button>
+        <button
+          onClick={() => {
+            navigate("/payment", { student: item });
+          }}
+        >
+          PayFees
         </button>
       </td>
       <Modal show={show} onHide={handleClose}>
