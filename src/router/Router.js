@@ -4,6 +4,7 @@ import Home from "../pages/home_page/Home";
 import Form from "../pages/form_page/FormPage";
 import NavBar from "../components/navbar/Navbar";
 import Payment from "../pages/payment/Payment";
+import Maps from "../pages/Maps/Maps";
 
 function Router() {
   return (
@@ -13,6 +14,7 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/form" element={<Form />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/maps" element={<Maps />} />
       </Routes>
     </BrowserRouter>
   );
